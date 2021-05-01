@@ -364,27 +364,11 @@ const Main = () => {
                             </ImgCrop>                            
                             </FormAntDesign.Item>
                         </FormAntDesign>
-                        {/* <FormAntDesign
-                            form={form}
-                            layout="vertical"
-                            initialValues={{
-                                requiredMarkValue: requiredMark,
-                            }}
-                            onValuesChange={onRequiredTypeChange}
-                            requiredMark={requiredMark}
-                            >
-                            <p className="title-style">Main Problem</p>
-                            <FormAntDesign.Item label="What is the main problem that you're trying to solve?" required tooltip="This is a required field">
-                                <TextArea
-                                value={problemValue}
-                                onChange={e => setProblemValue(e.target.value)}
-                                placeholder="Controlled autosize"
-                                autoSize={{ minRows: 3, maxRows: 5 }}
-                                />
-                            </FormAntDesign.Item>
-                        </FormAntDesign> */}
                     </Page>
+                    
+                    {/**IF YOU WANT TO ADD ANOTHER PAGE FOR YOUR FORMS JUST ADD <Page></Page> COMPONENT. EACH PAGE COMPONENT HAS CHILD OF FORM COMPONENT */}
                     {/* <Page>
+                        /** //////////////// IF YOU WANT TO ADD ANOTHER FORM JUST USE THIS CODE. EACH FORM HAS CHILD COMPONENTS OF FORM.ITEM *
                         <FormAntDesign
                             form={form}
                             layout="vertical"
@@ -408,6 +392,10 @@ const Main = () => {
                 </Form>
             </Modal>
             
+
+            {/** JUST FOCUS ON THIS COMPONENTS FOR BUILDING SLIDE LAYOUT. EACH SLIDE IS DIVIDED USING <div> TAGS.*/}
+            {/** ALSO PLEASE KEEP IN MIND THE STYLING FOR EACH SLIDE. IT USES INLINE CSS OF STYLING AND ALSO YOU CAN ADD INTERNAL STYLE ABOVE e.g. (problemStyle, contentStyle) */}
+
             <Carousel>
                 <div>
                     {
