@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import Main from '../src/container/MainPage/index'
+import Navigation from '../src/navigation/navigation'
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Navigation />
   </React.StrictMode>,
   document.getElementById('root')
 );
