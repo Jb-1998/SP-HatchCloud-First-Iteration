@@ -20,8 +20,8 @@ import { ReactComponent as SlideIconNew } from '../../assets/svg/slideicon2.svg'
 import ColorPicker, { useColor } from "react-color-palette";
 import ImgCrop from 'antd-img-crop';
 import Presentation from '../Presentation/index'
-
-
+import phoneframe from '../../assets/images/sampleimagephoneframe.png'
+import sampleinterface from '../../assets/images/Google.png'
 const { Header, Content, Footer, Sider } = Layout;
 
 const {Title} = Typography;
@@ -67,7 +67,7 @@ const Main = () => {
           </Menu.ItemGroup>
         </Menu>
     );
-
+    const sampleData = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
     const [modalDisplay, setModalDisplay] =  useState(true)
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [isModalPrimaryVisible, setIsModalPrimaryVisible] = useState(false);
@@ -246,7 +246,6 @@ const Main = () => {
         <Layout>
             <PageHeader
                 className="site-page-header"
-                onBack={() => window.history.back()}
                 title={"BrandUI"}
                 subTitle={"Create Your Pitch Deck"}
                 style={{backgroundColor: '#fff'}}
@@ -351,7 +350,6 @@ const Main = () => {
                             requiredMark={requiredMark}
                             >
                             <FormAntDesign.Item label="Image" required tooltip="Choose Image that will represent your company tagline and brand">
-                                <ImgCrop rotate>
                                 <Upload
                                     action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                                     listType="picture-card"
@@ -361,7 +359,36 @@ const Main = () => {
                                 >
                                     {fileList.length < 1 && '+ Upload'}
                                 </Upload>
-                            </ImgCrop>                            
+                            </FormAntDesign.Item>
+                        </FormAntDesign>
+                    </Page>
+                    <Page>
+                        <FormAntDesign
+                            form={form}
+                            layout="vertical"
+                            initialValues={{
+                                requiredMarkValue: requiredMark,
+                            }}
+                            onValuesChange={onRequiredTypeChange}
+                            requiredMark={requiredMark}
+                            >
+                            <p className="title-style">Problem Slide</p>
+                            <FormAntDesign.Item label="What is the main problem that you're trying to solve?" required tooltip="This is a required field">
+                                <TextArea
+                                value={problemValue}
+                                onChange={e => setProblemValue(e.target.value)}
+                                placeholder="State your main problem here"
+                                />
+                                <TextArea
+                                value={problemValue}
+                                onChange={e => setProblemValue(e.target.value)}
+                                placeholder="State your main problem here"
+                                />
+                                <TextArea
+                                value={problemValue}
+                                onChange={e => setProblemValue(e.target.value)}
+                                placeholder="State your main problem here"
+                                />
                             </FormAntDesign.Item>
                         </FormAntDesign>
                     </Page>
@@ -392,11 +419,11 @@ const Main = () => {
                 </Form>
             </Modal>
             
-
+``
             {/** JUST FOCUS ON THIS COMPONENTS FOR BUILDING SLIDE LAYOUT. EACH SLIDE IS DIVIDED USING <div> TAGS.*/}
             {/** ALSO PLEASE KEEP IN MIND THE STYLING FOR EACH SLIDE. IT USES INLINE CSS OF STYLING AND ALSO YOU CAN ADD INTERNAL STYLE ABOVE e.g. (problemStyle, contentStyle) */}
 
-            <Carousel>
+            <Carousel useKeyboardArrows={true}>
                 <div>
                     {
                         startupNameValue ?
@@ -435,13 +462,168 @@ const Main = () => {
                     }
                 </div>
                 <div>
-                <h3 style={contentStyle}>Problem Part Goes Here</h3>
+                    <section style={{backgroundImage: `url(${displayImageFile})`, width:'100%', height: '65vh', objectFit: 'fill', backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundRepeat: 'no-repeat'}}>
+                        <section style={{backgroundColor: 'rgba(0, 0, 0, 0.7)', width: '100%', height: '65vh'}}>
+                            <div style={{position: 'absolute', left: 50, top: 50, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                                <div style={{backgroundColor: `${primaryColor.hex}`, width: 50, height: 25}}></div>
+                                <span style={{color: '#fff', marginLeft: 10, fontSize: 20, fontFamily: 'Gilroy-Light'}}>Problem</span>
+                            </div>
+                            <section style={{alignItems: 'center', justifyContent: 'center', display: 'flex', height: '100%'}}>
+                                <p style={{color: '#fff', width: '70%', textAlign: 'center', fontFamily: 'Gilroy-Light', fontSize: 18}}>{sampleData}</p>
+                            </section>
+
+                        </section>
+                    </section>
                 </div>
                 <div>
-                <h3 style={contentStyle}>Solution Part Goes Here</h3>
-                </div>
-                <div style={contentStyle}>
+                    <section style={{backgroundColor: '#fff', width: '100%', height: '65vh'}}>
+                        <div style={{position: 'absolute', left: 50, top: 50, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                            <div style={{backgroundColor: `${primaryColor.hex}`, width: 50, height: 25}}></div>
+                            <span style={{color: 'black', marginLeft: 10, fontSize: 20, fontFamily: 'Gilroy-Light'}}>Solution</span>
+                        </div>
+                        <section style={{display: 'flex', height: '100%', paddingTop: 100, paddingLeft: 30, paddingRight: 30, paddingBottom: 100}}>
+                            <Row> 
+                                <Col span={12}>
+                                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',marginLeft: 25, marginTop: 50, paddingRight: 30}}>
+                                        <p style={{color: 'black', width: '100%', textAlign: 'left', fontFamily: 'Gilroy-Light', fontWeight: 'bold', fontSize: 18}}>Our Solution</p>
+                                        <p style={{color: 'black', width: '100%', textAlign: 'left', fontFamily: 'Gilroy-Light', fontSize: 14}}>{sampleData}</p>
+                                    </div>
+                                </Col>
+                                <Col span={12} style={{alignItems: 'center', justifyContent: 'center', display: 'flex', height: '100%'}}>
+                                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start'}}>
+                                        <p style={{color: 'black', width: '100%', textAlign: 'left', fontFamily: 'Gilroy-Light', fontWeight: 'bold', fontSize: 18}}>Value Proposition</p>
+                                        <Row style={{marginTop: 10}}>
+                                            <Col span={4}>
+                                                <div style={{backgroundColor: `${primaryColor.hex}`, width: 50, height: 25}}>
+                                                    <p style={{color: '#fff'}}>01</p>
+                                                </div>
+                                            </Col>
+                                            <Col span={18}>
+                                                <p style={{color: 'black', marginLeft: 10, fontSize: 13, fontFamily: 'Gilroy-Light', textAlign: 'left'}}>{sampleData}</p>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col span={4}>
+                                                <div style={{backgroundColor: `${primaryColor.hex}`, width: 50, height: 25}}>
+                                                    <p style={{color: '#fff'}}>02</p>
+                                                </div>
+                                            </Col>
+                                            <Col span={18}>
+                                                <p style={{color: 'black', marginLeft: 10, fontSize: 13, fontFamily: 'Gilroy-Light', textAlign: 'left'}}>{sampleData}</p>
+                                            </Col>
+                                        </Row>
+                                        <Row >
+                                            <Col span={4}>
+                                                <div style={{backgroundColor: `${primaryColor.hex}`, width: 50, height: 25}}>
+                                                    <p style={{color: '#fff'}}>03</p>
+                                                </div>
+                                            </Col>
+                                            <Col span={18}>
+                                                <p style={{color: 'black', marginLeft: 10, fontSize: 13, fontFamily: 'Gilroy-Light', textAlign: 'left'}}>{sampleData}</p>
+                                            </Col>
+                                        </Row>
 
+                                        {/* <p style={{color: 'black', width: '100%', textAlign: 'left', fontFamily: 'Gilroy-Light', fontSize: 14}}>{problemValue}</p> */}
+                                    </div>
+                                </Col>
+                            </Row>
+                        </section>
+                    </section>
+                </div>
+                <div>
+                    <section style={{backgroundColor: '#fff', width: '100%', height: '65vh'}}>
+                        <div style={{position: 'absolute', left: 50, top: 50, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                            <div style={{backgroundColor: `${primaryColor.hex}`, width: 50, height: 25}}></div>
+                            <span style={{color: 'black', marginLeft: 10, fontSize: 20, fontFamily: 'Gilroy-Light'}}>Product</span>
+                        </div>
+                        <section style={{display: 'flex', height: '100%', paddingTop: 100, paddingLeft: 30, paddingRight: 30, paddingBottom: 100}}>
+                            <Row> 
+                                <Col span={12}>
+                                    <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center',marginLeft: 25, marginTop: 0, paddingRight: 30}}>
+                                        <img src={sampleinterface} style={{ width: '50%', height: '50%'}}/>
+                                        <img src={sampleinterface} style={{ width: '50%', height: '50%'}}/>
+
+                                    </div>
+                                </Col>
+                                <Col span={12} style={{alignItems: 'center', justifyContent: 'center', display: 'flex', height: '100%'}}>
+                                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start',}}>
+                                        <p style={{color: 'black', width: '100%', textAlign: 'center', fontFamily: 'Gilroy-Light', fontWeight: 'bold', fontSize: 18}}>Product Name</p>
+                                        <p style={{color: 'black', fontSize: 13, fontFamily: 'Gilroy-Light', textAlign: 'center'}}>{sampleData}</p>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </section>
+                    </section>
+                </div>
+                <div>
+                    <section style={{backgroundColor: '#fff', width: '100%', height: '65vh', marginTop: 20}}>
+                        <div style={{position: 'absolute', left: 50, top: 50, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                            <div style={{backgroundColor: `${primaryColor.hex}`, width: 50, height: 25}}></div>
+                            <span style={{color: 'black', marginLeft: 10, fontSize: 20, fontFamily: 'Gilroy-Light'}}>Market Size</span>
+                        </div>
+                        <section style={{display: 'flex', height: '100%', paddingTop: 100, paddingLeft: 30, paddingRight: 30, paddingBottom: 100, flexDirection: 'column'}}>
+                            <Row style={{width: '100%'}}>
+                                <Col span={8} style={{alignItems: 'center', justifyContent: 'center', display: 'flex', height: '100%'}}>
+                                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start',width: '100%', marginTop: 0}}>
+                                        <p style={{color: 'black', width: '70%', textAlign: 'center', fontFamily: 'Gilroy-Light', fontWeight: 'bold', fontSize: 15, marginTop: 10}}>Total Available Market (TAM)</p>
+                                    </div>
+                                    </Col>
+                                    <Col span={8} style={{alignItems: 'center', justifyContent: 'center', display: 'flex', height: '100%'}}>
+                                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start',width: '100%', marginTop: 0}}>
+                                        <p style={{color: 'black', width: '80%', textAlign: 'center', fontFamily: 'Gilroy-Light', fontWeight: 'bold', fontSize: 15, marginTop: 10}}>Serviceable Available Market (SAM)</p>
+                                    </div>
+                                    </Col>
+                                    <Col span={8} style={{alignItems: 'center', justifyContent: 'center', display: 'flex', height: '100%'}}>
+                                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start',width: '100%', marginTop: 0}}>
+                                        <p style={{color: 'black', width: '100%', textAlign: 'center', fontFamily: 'Gilroy-Light', fontWeight: 'bold', fontSize: 15, marginTop: 10}}>Serviceable Obtainable Market (SOM)</p>
+                                    </div>
+                                    </Col>
+                            </Row>
+                            <Row style={{width: '100%'}}> 
+                                <Col span={8} style={{alignItems: 'center', justifyContent: 'center', display: 'flex', height: '100%'}}>
+                                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start',width: '100%', marginTop: 0}}>
+                                    <div style={{backgroundColor: `${primaryColor.hex}`, width: '70%', height: 100, alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
+                                        <span style={{color: '#fff', fontSize: 20}}>3,500</span>
+                                    </div>
+                                </div>
+                                </Col>
+                                <Col span={8} style={{alignItems: 'center', justifyContent: 'center', display: 'flex', height: '100%'}}>
+                                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start',width: '100%', marginTop: 0}}>
+                                    <div style={{backgroundColor: `${primaryColor.hex}`, width: '60%', height: 80, alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
+                                        <span style={{color: '#fff', fontSize: 20}}>3,500</span>
+                                    </div>
+                                </div>
+                                </Col>
+                                <Col span={8} style={{alignItems: 'center', justifyContent: 'center', display: 'flex', height: '100%'}}>
+                                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start',width: '100%', marginTop: 0}}>
+                                    <div style={{backgroundColor: `${primaryColor.hex}`, width: '50%', height: 60, alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
+                                        <span style={{color: '#fff', fontSize: 20, }}>3,500</span>
+                                    </div>
+                                </div>
+                                </Col>
+                            </Row>
+                            <Row style={{width: '100%'}}> 
+                                <Col span={8} style={{alignItems: 'center', justifyContent: 'center', display: 'flex', height: '100%'}}>
+                                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start',width: '100%', marginTop: 0}}>
+                                    <p style={{color: 'black', width: '100%', textAlign: 'center', fontFamily: 'Gilroy-Light', fontWeight: 'bold', fontSize: 15, marginTop: 10}}>Target Market</p>
+                                    <p style={{color: 'black', width: '100%', textAlign: 'center', fontFamily: 'Gilroy-Light', fontSize: 10, marginTop: 5, width: '80%'}}>{sampleData}</p>
+                                </div>
+                                </Col>
+                                <Col span={8} style={{alignItems: 'center', justifyContent: 'center', display: 'flex', height: '100%'}}>
+                                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start',width: '100%', marginTop: 0}}>
+                                    <p style={{color: 'black', width: '100%', textAlign: 'center', fontFamily: 'Gilroy-Light', fontWeight: 'bold', fontSize: 15, marginTop: 10}}>Target Market</p>
+                                    <p style={{color: 'black', width: '100%', textAlign: 'center', fontFamily: 'Gilroy-Light', fontSize: 10, marginTop: 5, width: '80%'}}>{sampleData}</p>
+                                </div>
+                                </Col>
+                                <Col span={8} style={{alignItems: 'center', justifyContent: 'center', display: 'flex', height: '100%'}}>
+                                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start',width: '100%', marginTop: 0}}>
+                                    <p style={{color: 'black', width: '100%', textAlign: 'center', fontFamily: 'Gilroy-Light', fontWeight: 'bold', fontSize: 15, marginTop: 10}}>Target Market</p>
+                                    <p style={{color: 'black', width: '100%', textAlign: 'center', fontFamily: 'Gilroy-Light', fontSize: 10, marginTop: 5, width: '80%'}}>{sampleData}</p>
+                                </div>
+                                </Col>
+                            </Row>
+                        </section>
+                    </section>
                 </div>
             </Carousel>
             </Content>
